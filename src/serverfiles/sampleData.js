@@ -1,69 +1,69 @@
-customers = [
+users = [
     {
-      custId: 1,
+      userId: 1,
       name: "ABC",
       password: "abc1234",
       role: "admin",
       email: "abc@gmail.com"
     },
     {
-      custId: 2,
+      userId: 2,
       name: "Willie",
       password: "willie1234",
       role: "student",
       email: "willie@gmail.com"
     },
     {
-      custId: 3,
+      userId: 3,
       name: "Jack",
       password: "jack1234",
       role: "faculty",
       email: "jack@gmail.com"
     },
     {
-      custId: 4,
+      userId: 4,
       name: "James",
       password: "james1234",
       role: "student",
       email: "james@gmail.com"
     },
     {
-      custId: 5,
+      userId: 5,
       name: "Harry",
       password: "harry1234",
       role: "faculty",
       email: "harry@gmail.com"
     },
     {
-      custId: 6,
+      userId: 6,
       name: "Tia",
       password: "tia1234",
       role: "student",
       email: "tia@gmail.com"
     },
     {
-      custId: 7,
+      userId: 7,
       name: "Aditya",
       password: "aditya123",
       role: "faculty",
       email: "aditya@gmail.com"
     },
     {
-      custId: 8,
+      userId: 8,
       name: "Sonu",
       password: "sonu1234",
       role: "student",
       email: "sonu@gmail.com"
     },
     {
-      custId: 9,
+      userId: 9,
       name: "Ellie",
       password: "ellie1234",
       role: "student",
       email: "ellie@gmail.com"
     },
     {
-      custId: 10,
+      userId: 10,
       name: "Gia",
       password: "gia1234",
       role: "faculty",
@@ -292,4 +292,4 @@ customers = [
     }
   ];
 
-  module.exports = {customers,courses,faculties,classes,students}
+  module.exports = {users,courses,faculties,classes,students}
