@@ -13,4 +13,5 @@ module.exports = function (app) {
     app.post("/postStudentDetails",functions.addStudentDetails);
     app.post("/addClass",functions.addClass);
     app.put("/editClass/:id", functions.editClass);
+    app.get("/test", functions.test);
 }

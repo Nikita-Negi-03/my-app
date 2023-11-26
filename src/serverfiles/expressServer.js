@@ -1,6 +1,6 @@
 require('app-module-path').addPath(__dirname);
 var express = require("express");
-var app = module.exports = express();
+var app = express();
 var port = process.env.PORT || require("../config/config.json")["port"];
 const { Client } = require("pg");
 const client = new Client(
@@ -11,10 +11,23 @@ const client = new Client(
   port: 5432,
   host: "dpg-clbre27t6quc73fi3v7g-a.oregon-postgres.render.com",
   ssl: { rejectUnauthorized: false },});
-  client.connect(function (res, error) {
-    console.log("res",res,error)
-    console.log(`Connected!!!`);
-  });
+
+  module.exports = async function () {
+    return new Promise((resolve, reject) => {
+      client.connect((err) => {
+        if (err) {
+          console.error("Error connecting to PostgreSQL:", err);
+          reject(err);
+        } else {
+          console.log("Connected to PostgreSQL!");
+          resolve({ app, client });
+        }
+      });
+    });
+  };
+
+
+
 app.use(express.json());
 
 app.use(function (req,res,next){
@@ -30,5 +43,6 @@ app.use(function (req,res,next){
 var routes = require('./routes');
 routes(app);
 
-
 app.listen(port, () => console.log(`Node app listening on port ${port}!`));
+
+

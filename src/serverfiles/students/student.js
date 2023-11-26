@@ -1,4 +1,15 @@
-var data= require("../sampleData")
+var data= require("../sampleData");
+const initializeServer = require("../expressServer");
+let server;
+async function startServer() {
+  try {
+    server = await initializeServer();
+    // Now you can access server.app and server.client
+  } catch (error) {
+    console.error("Error initializing server:", error);
+  }
+}
+startServer();
 var functions = {
     getStudentName: function (req,res){
         let studentsList= data.students.map(e=> {return e.name})
@@ -232,6 +243,17 @@ var functions = {
           data.classes[index]={classId:id,...updatedClassDetails};
           let class1= {classId:id,...updatedClassDetails};
         res.send(class1);
+    },
+    test: function(req,res){
+        let sql = "SELECT * FROM users";
+        server.client.query(sql, function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            let arr1 = result;
+            res.send(arr1.rows);
+          }
+        });
     }
 
 }
