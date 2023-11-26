@@ -2,6 +2,19 @@ require('app-module-path').addPath(__dirname);
 var express = require("express");
 var app = module.exports = express();
 var port = process.env.PORT || require("../config/config.json")["port"];
+const { Client } = require("pg");
+const client = new Client(
+  {
+  user: "postgresql_demo_2s76_user",
+  password: "BroET1oD6Zqrixb4TntLVeee51ueGE4b",
+  database: "postgresql_demo_2s76",
+  port: 5432,
+  host: "dpg-clbre27t6quc73fi3v7g-a.oregon-postgres.render.com",
+  ssl: { rejectUnauthorized: false },});
+  client.connect(function (res, error) {
+    console.log("res",res,error)
+    console.log(`Connected!!!`);
+  });
 app.use(express.json());
 
 app.use(function (req,res,next){
